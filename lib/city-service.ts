@@ -1,15 +1,12 @@
 import type { CityProfile } from './types'
+import { fetchWeather } from './mcp/weather'
 
 export async function getCityProfile(city: string): Promise<CityProfile> {
-  // TODO: Replace with MCP-backed service calls once available.
+  const weather = await fetchWeather(city)
+
   return {
     city,
-    weather: {
-      temperature: '22°C',
-      condition: 'Partly Cloudy',
-      humidity: '45%',
-      wind: '12 km/h',
-    },
+    weather,
     climate: {
       type: 'Temperate',
       averageTemp: '18°C',
